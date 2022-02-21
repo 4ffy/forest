@@ -9,7 +9,7 @@ AC_PROG_CC
 
 # Checks for libraries.
 # FIXME: Replace 'main' with a function in '-lncurses':
-AC_CHECK_LIB([ncurses], [main])
+AC_CHECK_LIB([ncursesw], [main])
 
 # Checks for header files.
 AC_CHECK_HEADERS([unistd.h])
