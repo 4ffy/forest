@@ -8,8 +8,7 @@ AM_INIT_AUTOMAKE([-Wall -Werror foreign])
 AC_PROG_CC
 
 # Checks for libraries.
-# FIXME: Replace 'main' with a function in '-lncurses':
-AC_CHECK_LIB([ncursesw], [main])
+AC_CHECK_LIB([ncursesw], [mvaddwstr])
 
 # Checks for header files.
 AC_CHECK_HEADERS([unistd.h])
