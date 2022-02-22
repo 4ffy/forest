@@ -10,7 +10,10 @@ int main(int argc, char** argv)
 {
 	setlocale(LC_ALL, "");
     srand(time(NULL));
+
     initscr();
+    cbreak();
+    nodelay(stdscr, TRUE);
     start_color();
     init_pair(1, COLOR_WHITE, COLOR_BLACK); //color for dead cells.
     init_pair(2, COLOR_GREEN, COLOR_BLACK); //color for live cells.
@@ -45,6 +48,7 @@ int main(int argc, char** argv)
         refresh();
         nextGeneration(f);
         usleep(100000);
+        if (getch() != ERR) break;
     }
 
     endwin();
