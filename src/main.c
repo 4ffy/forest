@@ -1,7 +1,7 @@
 /**
  * @file main.c
- * @author 4ffy
- * @copyright Copyright (c) 2022 4ffy
+ * @author Cameron Norton
+ * @copyright Copyright (c) 2022 Cameron Norton
  * 
  * Permission to use, copy, modify, and/or distribute this software for any
  * purpose with or without fee is hereby granted.
@@ -26,9 +26,9 @@
 
 int main(int argc, char** argv)
 {
+    //Setup.
 	setlocale(LC_ALL, "");
     srand(time(NULL));
-
     initscr();
     cbreak();
     nodelay(stdscr, TRUE);
@@ -37,7 +37,7 @@ int main(int argc, char** argv)
     init_pair(2, COLOR_GREEN, COLOR_BLACK); //color for live cells.
     init_pair(3, COLOR_RED,   COLOR_BLACK); //color for burning cells.
 
-
+    //Basic argument parsing.
 	double density  = 0;
 	double burnProb = 0;
 	double growProb = 0;
@@ -54,12 +54,13 @@ int main(int argc, char** argv)
     	return 1;
     }
     
+    //Setup forest.
     size_t width    = COLS / 2;
     size_t height   = LINES;
-
     forest_t* f = initForest(width, height, burnProb, growProb);
     randomFill(f, density);
 
+    //Run the automata until a key is pressed.
     while (1)
     {
         printForest(f);
@@ -69,6 +70,7 @@ int main(int argc, char** argv)
         if (getch() != ERR) break;
     }
 
+    //End.
     endwin();
     freeForest(f);
     return 0;

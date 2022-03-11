@@ -1,7 +1,7 @@
 /**
  * @file forest.c
- * @author 4ffy
- * @copyright Copyright (c) 2022 4ffy
+ * @author Cameron Norton
+ * @copyright Copyright (c) 2022 Cameron Norton
  *
  * Permission to use, copy, modify, and/or distribute this software for any
  * purpose with or without fee is hereby granted.
@@ -34,8 +34,10 @@ double randDouble()
 
 forest_t* initForest(size_t width, size_t height, double burnProb, double growProb)
 {
+    //Allocate memory.
     forest_t* f = malloc(sizeof(forest_t));
 
+    //Initialize arrays.
     f->cell = malloc(width * sizeof(char*));
     f->next = malloc(width * sizeof(char*));
     for (size_t x = 0; x < width; x++)
@@ -44,6 +46,7 @@ forest_t* initForest(size_t width, size_t height, double burnProb, double growPr
         f->next[x] = calloc(height, sizeof(char));
     }
 
+    //Set other members.
     f->width    = width;
     f->height   = height;
     f->burnProb = burnProb;
@@ -142,6 +145,7 @@ void nextGeneration(forest_t* f)
 
 int hasBurningNeighbor(forest_t* f, size_t x, size_t y)
 {
+    //This could probably be done better.
     if (x > 0)
     {
         if (f->cell[x-1][y] == BURNING) return 1;

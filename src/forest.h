@@ -1,7 +1,7 @@
 /**
  * @file forest.h
- * @author 4ffy
- * @copyright Copyright (c) 2022 4ffy
+ * @author Cameron Norton
+ * @copyright Copyright (c) 2022 Cameron Norton
  * 
  * Permission to use, copy, modify, and/or distribute this software for any
  * purpose with or without fee is hereby granted.
@@ -18,8 +18,8 @@
 
 #include <stdlib.h>
 
-#ifndef __FOREST_H__
-#define __FOREST_H__
+#ifndef FOREST_H
+#define FOREST_H
 
 #define DEAD 0
 #define ALIVE 1
@@ -37,6 +37,7 @@ typedef struct
     double burnProb;    /**< probability a tree spontaneously combusts  */
     double growProb;    /**< probability an empty cell grows a new tree */
 } forest_t;
+
 
 
 ///Return a random number between 0 and 1.
